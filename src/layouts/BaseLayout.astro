@@ -1,0 +1,33 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+---
+
+<html>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+
+    <script src="/scripts/ui.js" defer></script>
+  </body>
+</html>
+
+<script>
+  const username = "YOUR_GITHUB_USERNAME";
+
+  fetch(`https://api.github.com/users/${mithra916}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("gh-repos").innerText = data.public_repos;
+      document.getElementById("gh-followers").innerText = data.followers;
+    });
+
+  fetch(`https://api.github.com/users/${mithra916}/repos?per_page=100`)
+    .then(res => res.json())
+    .then(repos => {
+      const stars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+      document.getElementById("gh-stars").innerText = stars;
+    });
+</script>
