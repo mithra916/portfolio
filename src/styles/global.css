@@ -242,3 +242,25 @@ input, textarea {
     justify-content: center;
   }
 }
+
+
+
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px; /* curved square */
+  border: 2px solid rgba(0, 255, 100, 0.6);
+}
+
+.hero-content {
+  color: white;
+}
